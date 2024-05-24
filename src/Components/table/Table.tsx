@@ -72,7 +72,7 @@ const ContactList: React.FC<TableProps> = ({ data, deleteItem, editItem }) => {
       {itemToDelete && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
           <div className="bg-white p-4 rounded shadow-lg">
-            <h2 className="text-lg font-semibold mb-4">Are you sure you want to delete this contact?</h2>
+            <h2 className="text-lg font-semibold mb-4">Do you want to delete this contact?</h2>
             <div className="flex justify-end space-x-4">
               <button
                 className="bg-gray-300 text-black py-1 px-3 rounded hover:bg-gray-400"
