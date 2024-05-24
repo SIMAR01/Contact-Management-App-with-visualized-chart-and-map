@@ -47,8 +47,10 @@ const ContactForm: React.FC<FormProps> = ({ addItem, updateItem, currentItem, se
     e.preventDefault();
     if (currentItem) {
       updateItem({ ...currentItem, ...formState });
+      notifyUpdate();
     } else {
       addItem(formState);
+      notifyAdd();
     }
     setFormState({
       firstName: '',
@@ -70,6 +72,7 @@ const ContactForm: React.FC<FormProps> = ({ addItem, updateItem, currentItem, se
           value={formState.firstName}
           onChange={(e) => setFormState({ ...formState, firstName: e.target.value })}
           className="w-full p-2 border border-gray-300 rounded"
+          required
         />
         <input
           type="text"
@@ -77,6 +80,7 @@ const ContactForm: React.FC<FormProps> = ({ addItem, updateItem, currentItem, se
           value={formState.lastName}
           onChange={(e) => setFormState({ ...formState, lastName: e.target.value })}
           className="w-full p-2 border border-gray-300 rounded"
+          required
         />
       </div>
       <div className="space-y-2">
@@ -101,7 +105,7 @@ const ContactForm: React.FC<FormProps> = ({ addItem, updateItem, currentItem, se
           <span className="ml-2">Inactive</span>
         </label>
       </div>
-      <button type="submit" onClick={currentItem ? notifyUpdate : notifyAdd} className="w-full p-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+      <button type="submit" className="w-full p-2 bg-blue-500 text-white rounded hover:bg-blue-600">
         {currentItem ? 'Update Contact' : 'Add to Contact List'}
       </button>
     </form>
